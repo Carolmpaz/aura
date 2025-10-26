@@ -103,8 +103,9 @@ A conversa é humanizada: linguagem acessível, mensagens curtas e possibilidade
 
 <div align="center">
   <sub>FIGURA 1 - Arquitetura técnica</sub><br>
-  <img src= "arquitetura.png" width="100%"
+  <img src= "arquitetura.jpeg" width="100%"
   alt="funcionamneto AURA"><br>
   <sup>Funciomento AURA</sup>
 </div>
+
 
