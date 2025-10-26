@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "https://laqipjksvlejhfalgjdb.supabase.co",
+    "DATABASE_URL": "postgresql://postgres.laqipjksvlejhfalgjdb:auraganhador301@aws-1-us-east-1.pooler.supabase.com:6543/postgres"
+  }
+}
