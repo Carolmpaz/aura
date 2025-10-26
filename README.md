@@ -63,8 +63,8 @@ Esse contexto posiciona a proposta como uma solução inclusiva e de impacto, co
 **Motivação principal:** Simplificar o acesso a direitos sociais via tecnologia acessível.  
 
 **Viabilidade técnica:**  
-- Integração pronta entre n8n, WhatsApp Cloud API, OpenAI API e Google Sheets;   
-- Escalável para uso com Supabase ou bancos SQL no futuro.
+- Integração pronta entre n8n, WhatsApp Cloud API, OpenAI API e Supabase;   
+
 
 **Viabilidade de impacto:**  
 - Reduz erros nos cadastros e perda de benefícios;  
@@ -101,5 +101,10 @@ A conversa é humanizada: linguagem acessível, mensagens curtas e possibilidade
 
 ## 7. Arquitetura Técnica
 
-**Fluxo de funcionamento simplificado**
+<div align="center">
+  <sub>FIGURA 1 - Arquitetura técnica</sub><br>
+  <img src= "arquitetura.png" width="100%"
+  alt="funcionamneto AURA"><br>
+  <sup>Funciomento AURA</sup>
+</div>
 
