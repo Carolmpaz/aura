@@ -1,0 +1,1197 @@
+{
+  "name": "My workflow (Oct 26 at 10:16:50)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "whatsapp-n8n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -720,
+        0
+      ],
+      "id": "8baa0683-3108-486f-8515-73661bf6898e",
+      "name": "Webhook",
+      "webhookId": "9ce23c21-2993-4d19-b1a2-cf577ce994a0"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.ultima_mensagem_usuario }}",
+        "options": {
+          "systemMessage": "{\n  \"name\": \"AURA - Assistente Social Digital\",\n  \"description\": \"AURA é uma assistente social digital empática e institucional, criada para orientar mães chefes de família sobre benefícios sociais federais e locais, oferecendo passo a passo com base em fontes oficiais do gov.br.\",\n  \"instructions\": {\n    \"role\": \"Você é AURA, uma Assistente Social Digital especializada em políticas públicas e benefícios assistenciais do Brasil.\",\n    \"purpose\": \"Ajudar mães chefes de família em situação de vulnerabilidade a compreender e acessar benefícios sociais federais e locais, simplificando informações e promovendo autonomia.\",\n    \"actions\": [\n      \"Realizar o onboarding da mãe usuária, entendendo seu contexto familiar, renda aproximada, composição doméstica e presença de filhos neurodivergentes.\",\n      \"Com base nesse contexto, identificar e recomendar quais benefícios sociais podem ser solicitados (por exemplo: Cadastro Único, Bolsa Família, BPC/LOAS, Vale Gás, Minha Casa Minha Vida, Tarifa Social, benefícios estaduais ou municipais).\",\n      \"Fornecer explicações curtas e claras, com linguagem acessível, sem jargões técnicos.\",\n      \"Exibir passo a passo com links oficiais (gov.br, mds.gov.br, inss.gov.br).\",\n      \"Encerrar conversas reforçando apoio e incentivo emocional, com tom institucional e sensível.\"\n    ],\n    \"context\": {\n      \"usuario\": \"Mulheres entre 30 e 39 anos, ensino fundamental/médio incompleto, residindo em regiões periféricas ou rurais do Nordeste, Norte e Sudeste, geralmente chefes de família e responsáveis por filhos com deficiência, TEA ou TDAH.\",\n      \"objeto\": \"Garantir acesso à informação pública e diminuir barreiras institucionais e burocráticas.\",\n      \"principios\": [\n        \"Empatia e acolhimento.\",\n        \"Clareza e acessibilidade de linguagem.\",\n        \"Orientação baseada em dados e fontes oficiais.\",\n        \"Neutralidade política e religiosa.\"\n      ]\n    },\n    \"restrictions\": [\n      \"AURA pode receber e analisar documentos pessoais e identificadores (como CPF, RG, NIS, comprovantes de renda ou residência) exclusivamente para fins de orientação técnica dentro de programas sociais oficiais.\",\n      \"Esses dados devem ser tratados de forma temporária — utilizados apenas enquanto a conversa estiver ativa, sem gravação, compartilhamento ou armazenamento permanente em banco de dados.\",\n      \"O agente deve sempre esclarecer ao usuário que o envio dos documentos é opcional e que o uso serve somente para verificar se a documentação está legível e adequada conforme as exigências do programa social.\",\n      \"Nunca compartilhar, reenviar ou utilizar os documentos recebidos fora do contexto assistencial.\",\n      \"Qualquer dado sensível coletado temporariamente deve ser protegido por camada de segurança e eliminado após o encerramento da sessão, conforme os princípios da LGPD (Lei nº 13.709/2018).\",\n      \"Aura nunca responderá usando emojis.\",\n      \"Responda apenas perguntas relacionadas a benefícios sociais, cadastro único, documentos necessários, passo a passo para solicitação, direitos de mães chefes de família, filhos neurodivergentes e políticas assistenciais.\",\n      \"Se a pergunta do usuário for sobre qualquer outro tema (como esportes, notícias gerais, política partidária, economia geral, psicologia clínica, educação financeira ou assuntos jurídicos fora do escopo), responda com educação e clareza, deixando explícito que a pergunta está fora do seu escopo atual.\",\n      \"Se a pergunta não estiver estritamente ligada a benefícios sociais ou à assistência definida, não forneça respostas factuais. Em vez disso, informe educadamente que não pode responder a essa pergunta e convide o usuário a perguntar sobre benefícios sociais, direitos das mães solo ou apoio para filhos neurodivergentes.\",\n      \"Após informar que a pergunta está fora do escopo, redirecione o usuário para um tópico relacionado ao seu domínio, fazendo uma pergunta indutiva que leve ele a continuar a conversar sobre benefícios sociais, direitos ou assistência.\",\n      \"Nunca forneça informações que não estejam em sua base oficial e atualizada sobre os benefícios sociais, e não especule.\",\n      \"Exemplo de resposta para perguntas fora do escopo: \\\"Desculpe, não tenho informações para responder a essa pergunta específica. Mas posso ajudar com dúvidas sobre benefícios sociais para mães chefes de família ou organização de documentos para solicitar seus direitos. Gostaria de saber mais sobre algum benefício específico como o BPC ou Bolsa Família?\\\"\",\n      \"Garanta que o fluxo de conversa se mantenha focado, respeitando o contexto do público alvo, evitando respostas vagas ou que divaguem para temas alheios.\"\n    ],\n    \"output_format\": {\n      \"estrutura\": [\n        \"Saudação empática curta.\",\n        \"Resumo do benefício ou direito em até 2 frases.\",\n        \"Passo a passo em lista\",\n        \"Citação da fonte e link oficial.\",\n        \"Encerramento empático (‘Pode contar comigo para entender seus direitos!’).\"\n      ],\n      \"exemplo\": {\n        \"input\": \"Como faço para pedir o BPC?\",\n        \"output\": \"Oi!  O BPC é um benefício mensal para famílias de baixa renda com pessoas com deficiência. Confirme se o Cadastro Único está atualizado. Acesse o site ou app Meu INSS → 'Novo Pedido' → 'Benefício Assistencial'. Envie seus documentos e laudo médico. Ligue 135 para acompanhar. Fonte: gov.br/inss\"\n      }\n    },\n    \"scope\": {\n      \"inclusivo\": [\n        \"Benefícios sociais federais listados na base de conhecimento (CadÚnico, Bolsa Família, BPC/LOAS, Vale Gás, Tarifa Social, Minha Casa Minha Vida, etc.)\",\n        \"Programas estaduais e municipais ligados à assistência social e políticas de apoio a mães solo e famílias com filhos neurodivergentes.\"\n      ],\n      \"exclusivo\": [\n        \"Política partidária, economia geral, religião, psicologia clínica, educação financeira ou assuntos jurídicos não vinculados a políticas assistenciais.\"\n      ]\n    },\n    \"tone_style\": {\n      \"tom\": \"Empático, institucional e positivo.\",\n      \"linguagem\": \"Frases curtas, claras e em português simples.\",\n      \"voz\": \"Feminina, acolhedora e assertiva.\"\n    }\n  },\n  \"conversation_starters\": [\n    \"Quero saber se posso receber o Bolsa Família.\",\n    \"Meu filho tem autismo, o que posso solicitar?\",\n    \"Perdi meu CadÚnico e não sei como refazer.\",\n    \"Sou mãe solo e quero saber meus direitos.\",\n    \"Como faço o cadastro para o BPC/LOAS?\"\n  ],\n  \"knowledge_domains\": [\n    \"Cadastro Único para Programas Sociais\",\n    \"Bolsa Família\",\n    \"Benefício de Prestação Continuada (BPC/LOAS)\",\n    \"Tarifa Social de Energia Elétrica\",\n    \"Minha Casa, Minha Vida\",\n    \"Passe Livre para Pessoas com Deficiência\",\n    \"Vale Gás\",\n    \"Salário-Maternidade\",\n    \"Programas estaduais (SP, BA, PA, CE, AM, TO)\"\n  ]\n}\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1184,
+        -80
+      ],
+      "id": "cbeaad9a-05b4-4707-869c-9798c01c7492",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E946FD45D5DB1C1A9D0922F34499783/token/DF31DE26091A06940B581EB7/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "client-token",
+              "value": "F36547c7bba5b4670a1d6cad8e21de45dS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.output }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        80
+      ],
+      "id": "55021226-6956-493e-b926-231924b37d0d",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a16fc946-524f-4779-b354-5f2f115a891e",
+              "leftValue": "={{ $json.body.isGroup }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "c0dd8bf0-7eaa-4ebf-85b1-3a545f46824d",
+              "leftValue": "={{ $json.body.broadcast }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "08708d82-2567-4e8e-ad4a-8e1f6da2c63b",
+              "leftValue": "={{ $json.body.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "9ca7d645-7d85-4285-9f78-a28c53beb20c",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        48,
+        -32
+      ],
+      "id": "fab26249-65c6-42d9-9e9e-71e9632fb644",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit?usp=sharing",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Interações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ultima_mensagem_usuario": "={{ $('Webhook').item.json.body.text.message }}",
+            "timestamp_ultima_interacao": "={{ $('Webhook').item.json.body.momment }}",
+            "status": "aguardando_documento",
+            "phone": "={{ $('Get row(s) in sheet').item.json.phone }}",
+            "id": "=",
+            "ultima_mensagem_bot": "="
+          },
+          "matchingColumns": [
+            "phone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_mensagem_usuario",
+              "displayName": "ultima_mensagem_usuario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_mensagem_bot",
+              "displayName": "ultima_mensagem_bot",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "timestamp_ultima_interacao",
+              "displayName": "timestamp_ultima_interacao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "documentos_enviados",
+              "displayName": "documentos_enviados",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "log_historico",
+              "displayName": "log_historico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        880,
+        -64
+      ],
+      "id": "4ede8414-e8df-4536-883c-bb58d3da2c36",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqyTJM6vQnw5nvJ6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=\"session_\" + {{$json.phone}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1264,
+        144
+      ],
+      "id": "c5bc54fe-4bca-467b-a42a-f67038a8d4f9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw",
+          "mode": "list",
+          "cachedResultName": "Chatbot_Usuarios",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Interações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "=phone",
+              "lookupValue": "={{ $('Webhook').item.json.body.phone }}"
+            }
+          ]
+        },
+        "options": {
+          "returnFirstMatch": false
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        -64
+      ],
+      "id": "ae229bce-f6b8-45aa-8993-ebafcdb8b162",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqyTJM6vQnw5nvJ6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e5c9f31-8874-4a3f-a5b7-09ee2bec7300",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        -64
+      ],
+      "id": "7cb37e44-c051-47f0-b268-bbaddd6c00b1",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9cfc22a2-8030-419b-bad9-4e453e602e92",
+              "name": "ultima_mensagem_bot",
+              "value": "={{ $('AI Agent').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1632,
+        -112
+      ],
+      "id": "cf7043a7-c615-4fea-a38c-12650bb21382",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw",
+          "mode": "list",
+          "cachedResultName": "Chatbot_Usuarios",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Interações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ultima_mensagem_bot": "={{ $json.ultima_mensagem_bot }}",
+            "phone": "={{ $('Append or update row in sheet').item.json.phone }}"
+          },
+          "matchingColumns": [
+            "phone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_mensagem_usuario",
+              "displayName": "ultima_mensagem_usuario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_mensagem_bot",
+              "displayName": "ultima_mensagem_bot",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "timestamp_ultima_interacao",
+              "displayName": "timestamp_ultima_interacao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "documentos_enviados",
+              "displayName": "documentos_enviados",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "log_historico",
+              "displayName": "log_historico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1856,
+        -112
+      ],
+      "id": "1858667c-e4af-4c8c-8f34-04b3dc50b0d9",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqyTJM6vQnw5nvJ6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw",
+          "mode": "list",
+          "cachedResultName": "Chatbot_Usuarios",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Interações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ $('Webhook').item.json.body.phone }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_mensagem_usuario",
+              "displayName": "ultima_mensagem_usuario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_mensagem_bot",
+              "displayName": "ultima_mensagem_bot",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "timestamp_ultima_interacao",
+              "displayName": "timestamp_ultima_interacao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "documentos_enviados",
+              "displayName": "documentos_enviados",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "log_historico",
+              "displayName": "log_historico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -96,
+        240
+      ],
+      "id": "fe1e2001-3228-4b20-bfb1-2aa641f9fd1b",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqyTJM6vQnw5nvJ6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "66c4f659-88ba-4a34-95d5-d4bffcd6d20c",
+              "leftValue": "={{ $('Webhook').item.json.body.phone }}",
+              "rightValue": "={{ $json.phone.toString() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -240,
+        -16
+      ],
+      "id": "8ddc5579-4ed1-4360-b0cb-0074a5872e3d",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw",
+          "mode": "list",
+          "cachedResultName": "Chatbot_Usuarios",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Interações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "phone",
+              "lookupValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -512,
+        0
+      ],
+      "id": "1885408a-63a4-4090-9db6-9a9f2d1c2511",
+      "name": "Get row(s) in sheet2",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqyTJM6vQnw5nvJ6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1056,
+        128
+      ],
+      "id": "11a9dd5d-05bc-4df9-b293-f01ac0d0c3d6",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "j8JTO0D2ZITWgXz7",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E946FD45D5DB1C1A9D0922F34499783/token/DF31DE26091A06940B581EB7/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "client-token",
+              "value": "F36547c7bba5b4670a1d6cad8e21de45dS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.message }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        48,
+        -416
+      ],
+      "id": "68f6c817-7884-4fab-91a0-aedbef3752f3",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "15c3fda1-e41d-42eb-9b89-260bfb79c514",
+              "name": "name",
+              "value": "={{ $json.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "729e1ae7-7ae3-4ed5-bf02-7d9ab427642d",
+              "name": "message",
+              "value": "Seja bem-vinda mãe! Sou o Aura AI e estou pronto para te ajudar com os auxílios para o seu filho!",
+              "type": "string"
+            },
+            {
+              "id": "49d8f351-5f2d-4d69-af44-1979b7572c9b",
+              "name": "phone",
+              "value": "={{ $json.phone }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -160,
+        -416
+      ],
+      "id": "fc81e9eb-23eb-4424-85c7-2c547cd7008e",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 2
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -768,
+        -416
+      ],
+      "id": "a76d9120-489f-4b26-a675-eb7c866fb279",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "useCustomSchema": true,
+        "operation": "getAll",
+        "tableId": "users",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "status",
+              "condition": "eq",
+              "keyValue": "novo"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -416
+      ],
+      "id": "82e293a7-1afd-4903-96d0-2784816c15fc",
+      "name": "Get many rows",
+      "credentials": {
+        "supabaseApi": {
+          "id": "RUuk7DY2gLzWy9VC",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "status",
+              "condition": "eq",
+              "keyValue": "novo"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "mensagem_enviada"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        432,
+        -416
+      ],
+      "id": "81e27e52-e7a8-4c6e-856f-4f386f12acd5",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "RUuk7DY2gLzWy9VC",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function normalizePhone(phone) {\n  const digits = phone.replace(/\\D/g, '');\n  const countryCode = digits.slice(0, 2);\n  const ddd = digits.slice(2, 4);\n  let subscriber = digits.slice(4);\n\n  const dddsComNonoDigito = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '22', '24', '27', '28'];\n  const hasNine = subscriber.length === 9 && subscriber.startsWith('9');\n\n  if (!dddsComNonoDigito.includes(ddd) && hasNine) {\n    subscriber = subscriber.slice(1);\n  } else if (dddsComNonoDigito.includes(ddd) && subscriber.length === 8) {\n    subscriber = '9' + subscriber;\n  }\n\n  return countryCode + ddd + subscriber;\n}\n\nreturn items.map(item => {\n  const phone = item.json.phone || '';\n  item.json.phoneNormalized = normalizePhone(phone);\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        -416
+      ],
+      "id": "458ac837-55ba-4877-8d46-9f5fa2f7e1a6",
+      "name": "Code in JavaScript1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsCode": "function formatPhone(phone) {\n  return phone.replace(/\\D/g, '');\n}\n\nreturn items.map(item => {\n  return {\n    json: {\n      ...item.json,\n      formattedPhone: formatPhone(item.json.phone)\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -336,
+        -416
+      ],
+      "id": "fcd89ad0-6c48-4f27-84c0-271b8c8257c9",
+      "name": "Code in JavaScript",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw",
+          "mode": "list",
+          "cachedResultName": "Chatbot_Usuarios",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Interações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zjtWzyWZmEFlXC5fzFCIShcoWFpm-ttYBiaGiwHYNTw/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "phone",
+              "lookupValue": "={{ $json.body.phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -528,
+        176
+      ],
+      "id": "88b980ea-ea7d-45ed-b276-fe869032cf5b",
+      "name": "Get row(s) in sheet3",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqyTJM6vQnw5nvJ6",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get row(s) in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many rows": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "versionId": "cfcc76ba-b0a8-457f-8abf-4657408daef0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5cb9d29f56013b76d9da9fde673ff48e51045041bf5ef78b44b81f7a427310b4"
+  },
+  "id": "ZQ1PkcbCEkuFl08W",
+  "tags": []
+}
